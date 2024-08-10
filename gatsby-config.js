@@ -27,6 +27,12 @@ module.exports = {
       options: {
         url: process.env.WPGRAPHQL_URL,
       },
+      auth: {
+        htaccess: {
+          username: process.env.HTTPBASICAUTH_USERNAME,
+          password: process.env.HTTPBASICAUTH_PASSWORD,
+        }
+      }
     },
     {
       resolve: "gatsby-plugin-manifest",
