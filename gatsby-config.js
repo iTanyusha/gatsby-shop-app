@@ -7,7 +7,7 @@ require("dotenv").config({
  */
 module.exports = {
   siteMetadata: {
-    title: `The Gatsby Garage`,
+    title: `Gatsby Shop`,
     siteUrl: `https://www.yourdomain.tld`,
   },
   plugins: [
@@ -19,7 +19,7 @@ module.exports = {
     },
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-postcss",
-    `gatsby-transformer-sharp`, // Needed for dynamic images,
+    `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-image`,
     {
