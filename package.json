@@ -12,9 +12,9 @@
   "scripts": {
     "develop": "gatsby develop",
     "start": "gatsby develop",
-    "build": "gatsby clean && gatsby build",
+    "build": "npm run clean && gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "rm -rf public && rm -rf .cache"
   },
   "dependencies": {
     "@apollo/client": "^3.11.4",
