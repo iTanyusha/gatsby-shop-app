@@ -4,6 +4,7 @@ const { assignIds, assignGatsbyImage } = require("@webdeveducation/wp-block-tool
 
 exports.createPages = async ({ actions, graphql }) => {
     const pageTemplate = path.resolve('src/templates/page.js');
+    const productTemplate = path.resolve('src/templates/product.js');
     const { createPage } = actions;
 
     const { data } = await graphql(`
@@ -17,6 +18,17 @@ exports.createPages = async ({ actions, graphql }) => {
                     databaseId
                     uri
                     blocks
+                    productDetails {
+                        price
+                        releaseDate
+                        description
+                    }
+                    excerpt
+                    featuredImage {
+                        node {
+                            mediaItemUrl
+                        }
+                    }
                 }
             }
             allWpPage {
@@ -35,10 +47,8 @@ exports.createPages = async ({ actions, graphql }) => {
     }
     catch (e) { }
 
-    const allPages = [...data.allWpPage.nodes, ...data.allWpProduct.nodes];
-
-    for (let i = 0; i < allPages.length; i++) {
-        const page = allPages[i];
+    for (let i = 0; i < data.allWpPage.nodes.length; i++) {
+        const page = data.allWpPage.nodes[i];
 
         let blocks = page.blocks;
         blocks = assignIds(blocks);
@@ -54,6 +64,23 @@ exports.createPages = async ({ actions, graphql }) => {
             context: {
                 title: page.title,
                 blocks
+            }
+        })
+    }
+
+    for (let i = 0; i < data.allWpProduct.nodes.length; i++) {
+        const page = data.allWpProduct.nodes[i];
+
+        createPage({
+            path: page.uri,
+            component: productTemplate,
+            context: {
+                title: page.title,
+                excerpt: page.excerpt,
+                price: page.productDetails?.price,
+                description: page.productDetails?.description,
+                releaseDate: page.productDetails?.releaseDate,
+                image: page.featuredImage?.node?.mediaItemUrl
             }
         })
     }

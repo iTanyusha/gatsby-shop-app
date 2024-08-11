@@ -10,20 +10,22 @@ const Page = (props) => {
     return (
         <Layout>
             <h1>{props.pageContext.title}</h1>
-            <BlockRendererProvider
-                allBlocks={props.pageContext.blocks}
-                renderComponent={blockRendererComponents}
-                siteDomain={process.env.GATSBY_WP_URL}
-                customInternalLinkComponent={(
-                    { children, internalHref, className }
-                    , i) => (
-                    <Link
-                        key={i}
-                        className={className}
-                        to={internalHref}>
-                        {children}
-                    </Link>
-                )} />
+            <section className='products'>
+                <BlockRendererProvider
+                    allBlocks={props.pageContext.blocks}
+                    renderComponent={blockRendererComponents}
+                    siteDomain={process.env.GATSBY_WP_URL}
+                    customInternalLinkComponent={(
+                        { children, internalHref, className }
+                        , i) => (
+                        <Link
+                            key={i}
+                            className={className}
+                            to={internalHref}>
+                            {children}
+                        </Link>
+                    )} />
+            </section>
         </Layout>
     )
 }

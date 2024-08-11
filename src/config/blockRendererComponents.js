@@ -12,6 +12,7 @@ export const blockRendererComponents = (block) => {
                 product={block.attributes.data.product}
                 price={block.attributes.price}
                 releaseDate={block.attributes.releaseDate}
+                image={block.attributes.image}
             />;
         }
         case "core/media-text": {
