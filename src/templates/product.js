@@ -11,7 +11,7 @@ const ProductPage = ({ pageContext }) => {
             <h1>{title}</h1>
             <section className='product-page'>
                 <div className='product-image'>
-                    <img src={image} alt={title} />
+                    {image && <img src={image} alt={title} />}
 
                     <div className='action sm'>
                         <p className='price'>$ {price}</p>
