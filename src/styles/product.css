@@ -1,6 +1,7 @@
 .product-page {
   display: flex;
   flex-direction: row;
+  gap: 16px;
 }
 
 .product-image {
