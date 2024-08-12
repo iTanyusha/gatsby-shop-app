@@ -20,8 +20,12 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-postcss",
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    `gatsby-plugin-image`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        failOnError: false
+      }
+    }, `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-wordpress`,
 
@@ -35,7 +39,7 @@ module.exports = {
         },
         html: {
           useGatsbyImage: false,
-          createStaticFiles: false,
+          createStaticFiles: true,
         }
       },
     },
