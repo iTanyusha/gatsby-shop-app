@@ -1,15 +1,12 @@
 import React from 'react';
 
 import { Layout } from '../components';
-import { GatsbyImage } from 'gatsby-plugin-image';
+import { GatsbyImage, StaticImage } from 'gatsby-plugin-image';
 
 
 
 const ProductPage = ({ pageContext }) => {
-    console.log(pageContext);
     const { title, image, price, description } = pageContext;
-
-
 
     return (
         <Layout>
@@ -17,7 +14,7 @@ const ProductPage = ({ pageContext }) => {
             <section className='product-page'>
                 <div className='product-image'>
 
-                    {image && <GatsbyImage image={image.node.localFile.childImageSharp.gatsbyImageData} alt={title} />}
+                    {image ? <GatsbyImage image={image.node.localFile.childImageSharp.gatsbyImageData} alt={title} /> : <StaticImage src='../images/placeholder.jpg' />}
 
                     <div className='action sm'>
                         <p className='price'>$ {price}</p>
