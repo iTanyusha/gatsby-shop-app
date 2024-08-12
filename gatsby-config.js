@@ -38,7 +38,7 @@ module.exports = {
           }
         },
         html: {
-          useGatsbyImage: false,
+          useGatsbyImage: true,
           createStaticFiles: true,
         }
       },
