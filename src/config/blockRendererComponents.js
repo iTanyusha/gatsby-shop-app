@@ -5,8 +5,6 @@ import { MediaText, Product } from '../components';
 export const blockRendererComponents = (block) => {
     switch (block.name) {
         case "shop/product": {
-            console.log("shop/product: ", block);
-
             return <Product
                 key={block.id}
                 product={block.attributes.data.product}

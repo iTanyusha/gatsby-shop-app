@@ -1,19 +1,23 @@
 import React from 'react';
 
 import { Layout } from '../components';
-// import { StaticImage, getImage } from 'gatsby-plugin-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
+
 
 
 const ProductPage = ({ pageContext }) => {
     console.log(pageContext);
     const { title, image, price, description } = pageContext;
+
+
+
     return (
         <Layout>
             <h1>{title}</h1>
             <section className='product-page'>
                 <div className='product-image'>
-                    {/* <StaticImage alt={title} src={image} width={200} height={200} /> */}
-                    {image && <img src={image} alt={title} />}
+
+                    {image && <GatsbyImage image={image.node.localFile.childImageSharp.gatsbyImageData} alt={title} />}
 
                     <div className='action sm'>
                         <p className='price'>$ {price}</p>

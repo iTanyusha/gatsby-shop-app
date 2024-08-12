@@ -26,7 +26,14 @@ exports.createPages = async ({ actions, graphql }) => {
                     excerpt
                     featuredImage {
                         node {
-                            mediaItemUrl
+                            localFile {
+                                childImageSharp {
+                                    gatsbyImageData(
+                                        placeholder: DOMINANT_COLOR
+                                        formats: [JPG]
+                                    )
+                                }
+                            }
                         }
                     }
                 }
@@ -80,7 +87,7 @@ exports.createPages = async ({ actions, graphql }) => {
                 price: page.productDetails?.price,
                 description: page.productDetails?.description,
                 releaseDate: page.productDetails?.releaseDate,
-                image: page.featuredImage?.node?.mediaItemUrl
+                image: page.featuredImage
             }
         })
     }

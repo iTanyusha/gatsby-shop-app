@@ -4,8 +4,6 @@ import React from 'react';
 export const Product = ({ product, price, releaseDate, image }) => {
     const showProduct = new Date(releaseDate) <= new Date() || !releaseDate;
 
-    console.log(product.post_title, new Date(releaseDate) <= new Date());
-
     if (!showProduct) return null;
 
     return <Link to={'/product' + product.uri} className='product' >
