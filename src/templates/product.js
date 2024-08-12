@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Layout } from '../components';
-import { StaticImage } from 'gatsby-plugin-image';
+import { StaticImage, getImage } from 'gatsby-plugin-image';
 
 
 const ProductPage = ({ pageContext }) => {
@@ -12,7 +12,7 @@ const ProductPage = ({ pageContext }) => {
             <h1>{title}</h1>
             <section className='product-page'>
                 <div className='product-image'>
-                    {image && <StaticImage alt={title} src={image} />}
+                    {image && <img src={image} alt={title} />}
 
                     <div className='action sm'>
                         <p className='price'>$ {price}</p>
